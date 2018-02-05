@@ -420,6 +420,15 @@ def setListItemProps(id, listItem, result, server, extra_props, title):
             'mediatype': mediatype
         }
 
+        if item_type == 'movie':
+            year = result.get("ProductionYear")
+            prem_date = result.get("PremiereDate")
+
+            if year is not None:
+                details['year'] = year
+            elif details['year'] is None and prem_date is not None:
+                details['year'] = int(prem_date[:4])
+
         tv_show_name = result.get("SeriesName")
         if tv_show_name is not None:
             details['tvshowtitle'] = tv_show_name
