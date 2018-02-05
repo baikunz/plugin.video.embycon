@@ -738,7 +738,7 @@ def searchResults(params):
     log.debug('searchResults Called: {0}', params)
 
     handle = int(sys.argv[1])
-    query = user_input
+    query = urllib.quote_plus(user_input)
     item_type = params.get('item_type')
     if (not item_type) or (not query):
         return
